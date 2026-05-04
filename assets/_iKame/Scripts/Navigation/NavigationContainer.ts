@@ -5,8 +5,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('NavigationContainer')
 export class NavigationContainer extends Component {
-    @property({type : StackNavigator})
-    public stack: StackNavigator = null;
+    @property({type : StackNavigator}) public stack: StackNavigator = null;
     
     private uiCamera: Camera = null;
     protected onLoad(): void {
@@ -17,5 +16,3 @@ export class NavigationContainer extends Component {
         this.stack = this.getComponentInChildren(StackNavigator);
     }
 }
-
-
