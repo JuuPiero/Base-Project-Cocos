@@ -1,6 +1,6 @@
 import { EventMouse, EventTouch } from "cc";
 export interface IPointerDownHandler {
-    onPointerDown(event: any): void;
+    onPointerDown(event: EventMouse | EventTouch): void;
 }
 
 export interface IPointerUpHandler {
