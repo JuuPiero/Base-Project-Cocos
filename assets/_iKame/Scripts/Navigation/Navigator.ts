@@ -14,9 +14,10 @@ export abstract class Navigator extends Component {
         // screens.forEach(screen => {
         //     this.screens.set(screen.screenName, screen);
         // })
-        const screens = this.node.children
+        const screens = this.node.children;
         for (const node of screens) {
-            for (const comp of node.components) {
+            const components = node.getComponents(Component);
+            for (const comp of components) {
                 const scr = comp as unknown as Partial<IScreen>;
                 if (scr.enter && scr.exit) {
                     this.screens.set(node.name, scr as ScreenBase);

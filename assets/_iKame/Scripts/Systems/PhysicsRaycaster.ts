@@ -193,17 +193,36 @@ export class PhysicsRaycaster extends Component {
         }
 
         const result = PhysicsSystem.instance.raycastResults[0];
-        return result.collider.node;
+        if (!result || !result.collider || !result.collider.node) {
+            return null;
+        }
+
+        const node = result.collider.node;
+        return node.isValid ? node : null;
     }
 
     private findHandler<T>(
         node: Node,
         methodName: keyof T
     ): T | null {
-        for (const comp of node.components) {
-            const handler = comp as unknown as Partial<T>;
+        if (!node || !node.isValid) {
+            return null;
+        }
 
-            if (typeof handler[methodName] === "function") {
+        const components = node.getComponents(Component) as unknown as { length?: number; [index: number]: Component };
+        if (!components || typeof components.length !== 'number' || components.length === 0) {
+            return null;
+        }
+        
+
+        for (let i = 0; i < components?.length; i++) {
+            const comp = components[i];
+            if (!comp) {
+                continue;
+            }
+
+            const handler = comp as unknown as Partial<T>;
+            if (typeof handler[methodName] === 'function') {
                 return handler as T;
             }
         }

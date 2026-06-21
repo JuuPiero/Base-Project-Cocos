@@ -5,7 +5,7 @@ const { ccclass, property } = _decorator;
 export class GameBehaviour extends Component {
     public findFirstObjectByType<T extends Component>(typeOrMarker: new (...args: any[]) => T): T | null {
         const components = director.getScene()?.getComponentsInChildren(typeOrMarker as any) || [];
-        return components.length > 0 ? components[0].getComponent(typeOrMarker) : null;
+        return components?.length > 0 ? components[0].getComponent(typeOrMarker) : null;
     }
     public findObjectsByType<T extends Component>(
         type: Constructor<T>
