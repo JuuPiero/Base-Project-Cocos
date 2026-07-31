@@ -1,9 +1,9 @@
 import { _decorator } from 'cc';
-import { FlexViewUI } from './FlexViewUI';
+import { FlexViewWorld } from './FlexViewWorld';
 const { ccclass } = _decorator;
 
-@ccclass('FlexVerticalViewUI')
-export class FlexVerticalViewUI extends FlexViewUI {
+@ccclass('FlexVerticalView')
+export class FlexVerticalView extends FlexViewWorld {
     layout(): void {
         const items = this.node.children;
         if (items.length === 0) return;

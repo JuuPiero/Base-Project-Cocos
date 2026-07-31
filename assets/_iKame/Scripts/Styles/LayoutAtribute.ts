@@ -3,7 +3,7 @@ export enum JustifyContent {
     Center,
     SpaceBetween,
     SpaceAround,
-    SpaceCvenly,
+    SpaceEvenly,
     End
 }
 
@@ -11,4 +11,9 @@ export enum AlignItems {
     Start,
     Center,
     End
+}
+
+export enum GridConstraint {
+    FixedColumnCount,
+    FixedRowCount
 }
